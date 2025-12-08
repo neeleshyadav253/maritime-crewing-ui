@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import {
   Calendar,
   Users,
-  CheckCircle,
-  XCircle,
   Clock,
   Video,
   Phone,
   MapPin,
   User,
-  FileText,
   Star,
 } from "lucide-react";
 import { useCandidateStore } from "../store";
@@ -95,12 +92,40 @@ const Interviews: React.FC = () => {
     {
       key: "candidate",
       label: "Candidate",
-      render: (value) => `${value.firstName} ${value.lastName}`,
+      render: (value: { firstName: string; lastName: string }) =>
+        `${value.firstName} ${value.lastName}`,
     },
     {
       key: "type",
       label: "Type",
-      render: (value) => (
+      render: (
+        value:
+          | string
+          | number
+          | bigint
+          | boolean
+          | React.ReactElement<
+              unknown,
+              string | React.JSXElementConstructor<unknown>
+            >
+          | Iterable<React.ReactNode>
+          | Promise<
+              | string
+              | number
+              | bigint
+              | boolean
+              | React.ReactPortal
+              | React.ReactElement<
+                  unknown,
+                  string | React.JSXElementConstructor<unknown>
+                >
+              | Iterable<React.ReactNode>
+              | null
+              | undefined
+            >
+          | null
+          | undefined
+      ) => (
         <span
           className={`px-2 py-1 text-xs rounded ${
             value === "Technical"
@@ -117,14 +142,43 @@ const Interviews: React.FC = () => {
     {
       key: "date",
       label: "Date & Time",
-      render: (_, item) =>
-        `${new Date(item.date).toLocaleDateString()} ${item.time}`,
+      render: (
+        _: unknown,
+        item: { date: string | number | Date; time: unknown }
+      ) => `${new Date(item.date).toLocaleDateString()} ${item.time}`,
     },
     { key: "interviewer", label: "Interviewer" },
     {
       key: "mode",
       label: "Mode",
-      render: (value) => (
+      render: (
+        value:
+          | string
+          | number
+          | bigint
+          | boolean
+          | React.ReactElement<
+              unknown,
+              string | React.JSXElementConstructor<unknown>
+            >
+          | Iterable<React.ReactNode>
+          | Promise<
+              | string
+              | number
+              | bigint
+              | boolean
+              | React.ReactPortal
+              | React.ReactElement<
+                  unknown,
+                  string | React.JSXElementConstructor<unknown>
+                >
+              | Iterable<React.ReactNode>
+              | null
+              | undefined
+            >
+          | null
+          | undefined
+      ) => (
         <span className="flex items-center">
           {value === "Video" ? (
             <Video className="h-4 w-4 mr-1" />
@@ -140,7 +194,34 @@ const Interviews: React.FC = () => {
     {
       key: "result",
       label: "Result",
-      render: (value) => (
+      render: (
+        value:
+          | string
+          | number
+          | bigint
+          | boolean
+          | React.ReactElement<
+              unknown,
+              string | React.JSXElementConstructor<unknown>
+            >
+          | Iterable<React.ReactNode>
+          | Promise<
+              | string
+              | number
+              | bigint
+              | boolean
+              | React.ReactPortal
+              | React.ReactElement<
+                  unknown,
+                  string | React.JSXElementConstructor<unknown>
+                >
+              | Iterable<React.ReactNode>
+              | null
+              | undefined
+            >
+          | null
+          | undefined
+      ) => (
         <span
           className={`px-2 py-1 text-xs rounded ${
             value === "Passed"
@@ -157,7 +238,7 @@ const Interviews: React.FC = () => {
     {
       key: "status",
       label: "Status",
-      render: (value) => <StatusTag status={value} />,
+      render: (value: string) => <StatusTag status={value} />,
     },
   ];
 
@@ -193,7 +274,7 @@ const Interviews: React.FC = () => {
               {["all", "scheduled", "completed", "pending"].map((type) => (
                 <button
                   key={type}
-                  onClick={() => setSelectedInterviewType(type as any)}
+                  onClick={() => setSelectedInterviewType(type as never)}
                   className={`px-4 py-2 rounded-lg ${
                     selectedInterviewType === type
                       ? "bg-maritime-blue text-white"
@@ -208,9 +289,7 @@ const Interviews: React.FC = () => {
             <DataTable
               data={filteredInterviews}
               columns={columns}
-              onRowClick={(interview) =>
-                console.log("Interview details:", interview)
-              }
+              onRowClick={(row) => console.log(row)}
             />
           </div>
 

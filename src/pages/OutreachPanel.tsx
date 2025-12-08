@@ -4,15 +4,10 @@ import {
   PhoneOutgoing,
   PhoneMissed,
   PhoneIncoming,
-  Clock,
   MessageSquare,
-  Filter,
   Download,
-  User,
-  Calendar,
 } from "lucide-react";
 import { useCandidateStore } from "../store";
-import StatusTag from "../components/common/StatusTag";
 import DataTable from "../components/common/DataTable";
 
 const OutreachPanel: React.FC = () => {
@@ -77,14 +72,15 @@ const OutreachPanel: React.FC = () => {
     {
       key: "candidate",
       label: "Candidate",
-      render: (value) => `${value.firstName} ${value.lastName}`,
+      render: (value: { firstName: string; lastName: string }) =>
+        `${value.firstName} ${value.lastName}`,
     },
     { key: "date", label: "Date & Time" },
     { key: "duration", label: "Duration" },
     {
       key: "type",
       label: "Type",
-      render: (value) => (
+      render: (value: string) => (
         <span
           className={`px-2 py-1 rounded text-xs ${
             value === "outgoing"
@@ -99,7 +95,34 @@ const OutreachPanel: React.FC = () => {
     {
       key: "outcome",
       label: "Outcome",
-      render: (value) => (
+      render: (
+        value:
+          | string
+          | number
+          | bigint
+          | boolean
+          | React.ReactElement<
+              unknown,
+              string | React.JSXElementConstructor<unknown>
+            >
+          | Iterable<React.ReactNode>
+          | Promise<
+              | string
+              | number
+              | bigint
+              | boolean
+              | React.ReactPortal
+              | React.ReactElement<
+                  unknown,
+                  string | React.JSXElementConstructor<unknown>
+                >
+              | Iterable<React.ReactNode>
+              | null
+              | undefined
+            >
+          | null
+          | undefined
+      ) => (
         <span
           className={`px-2 py-1 rounded text-xs ${
             value === "Contacted"
@@ -151,7 +174,7 @@ const OutreachPanel: React.FC = () => {
               {["all", "contacted", "no-answer", "callback"].map((type) => (
                 <button
                   key={type}
-                  onClick={() => setSelectedCallType(type as any)}
+                  onClick={() => setSelectedCallType(type as never)}
                   className={`px-4 py-2 rounded-lg flex items-center ${
                     selectedCallType === type
                       ? "bg-maritime-blue text-white"

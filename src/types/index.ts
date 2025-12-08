@@ -15,6 +15,7 @@ export interface Candidate {
     availabilityDate: string;
 }
 
+
 export interface Document {
     id: string;
     candidateId: string;

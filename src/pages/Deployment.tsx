@@ -13,9 +13,8 @@ import StatusTag from "../components/common/StatusTag";
 const Deployment: React.FC = () => {
   const { candidates } = useCandidateStore();
   const { vessels } = useVesselStore();
-  const [selectedCandidate, setSelectedCandidate] = useState(candidates[0]);
+  const [selectedCandidate] = useState(candidates[0]);
   const [selectedVessel, setSelectedVessel] = useState(vessels[0]);
-  const [deploymentStep, setDeploymentStep] = useState(1);
 
   const deploymentSteps = [
     { id: 1, name: "Final Approval", status: "complete" },
@@ -35,12 +34,12 @@ const Deployment: React.FC = () => {
 
   const handleGenerateDocuments = () => {
     console.log("Generating joining documents...");
-    setDeploymentStep(4);
+    // setDeploymentStep(4);
   };
 
   const handleSendInstructions = () => {
     console.log("Sending joining instructions...");
-    setDeploymentStep(5);
+    // setDeploymentStep(5);
   };
 
   return (

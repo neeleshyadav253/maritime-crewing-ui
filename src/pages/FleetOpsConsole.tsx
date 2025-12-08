@@ -12,7 +12,6 @@ import StatusTag from "../components/common/StatusTag";
 
 const FleetOpsConsole: React.FC = () => {
   const { vessels } = useVesselStore();
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [view, setView] = useState<"roster" | "calendar" | "planning">(
     "roster"
   );

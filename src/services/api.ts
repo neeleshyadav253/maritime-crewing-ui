@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Candidate, Document, Vessel, Interview, CallLog, DashboardMetrics } from '../types';
 
 const API_BASE_URL = 'http://localhost:3000/api';
@@ -5,7 +7,7 @@ const API_BASE_URL = 'http://localhost:3000/api';
 // Mock API service that simulates backend calls
 export const apiService = {
     // Candidate endpoints
-    async getCandidates(params?: any): Promise<Candidate[]> {
+    async getCandidates(): Promise<Candidate[]> {
         const response = await fetch(`${API_BASE_URL}/candidates`);
         if (!response.ok) throw new Error('Failed to fetch candidates');
         return response.json();
@@ -165,6 +167,7 @@ const mockFetch = async (url: string, options?: RequestInit): Promise<Response> 
 };
 
 // Override fetch for development
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.MODE === 'development') {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     window.fetch = mockFetch as any;
 }

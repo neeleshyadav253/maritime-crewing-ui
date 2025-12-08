@@ -1,58 +1,70 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import type { Candidate } from "../../types";
 
-interface DataTableProps {
-  data: Candidate[];
-  columns: {
-    key: keyof Candidate;
-    label: string;
-    render?: (value: unknown, item: Candidate) => React.ReactNode;
-  }[];
-  onRowClick?: (item: Candidate) => void;
+export interface Column<T = any> {
+  key: keyof T | string; // 🔥 allows virtual and nested keys
+  label: string;
+  render?: (value: any, item: T) => React.ReactNode; // 🔥 more flexible render
 }
 
-const DataTable: React.FC<DataTableProps> = ({ data, columns, onRowClick }) => {
+interface DataTableProps<T = any> {
+  data: T[];
+  columns: Column<T>[];
+  onRowClick?: (item: T) => void;
+}
+
+function DataTable<T = any>({ data, columns, onRowClick }: DataTableProps<T>) {
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+      <table className="min-w-full divide-y divide-gray-300 text-sm">
+        <thead className="bg-gray-100">
           <tr>
-            {columns.map((column) => (
+            {columns.map((col) => (
               <th
-                key={column.key}
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                key={String(col.key)}
+                className="px-4 py-2 text-left text-xs font-semibold uppercase text-gray-600"
               >
-                {column.label}
+                {col.label}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-          {data.map((item) => (
-            <tr
-              key={item.id}
-              onClick={() => onRowClick?.(item)}
-              className={`hover:bg-gray-50 ${
-                onRowClick ? "cursor-pointer" : ""
-              }`}
-            >
-              {columns.map((column) => (
-                <td key={column.key} className="px-6 py-4 whitespace-nowrap">
-                  {column.render ? (
-                    column.render(item[column.key], item)
-                  ) : (
-                    <div className="text-sm text-gray-900">
-                      {item[column.key]}
-                    </div>
-                  )}
-                </td>
-              ))}
+
+        <tbody className="divide-y divide-gray-200">
+          {data.length > 0 ? (
+            data.map((item, rowIndex) => (
+              <tr
+                key={rowIndex}
+                className={`hover:bg-gray-50 ${
+                  onRowClick ? "cursor-pointer" : ""
+                }`}
+                onClick={() => onRowClick?.(item)}
+              >
+                {columns.map((col, colIndex) => {
+                  const value = (item as any)[col.key];
+
+                  return (
+                    <td key={colIndex} className="px-4 py-2">
+                      {col.render ? col.render(value, item) : String(value)}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td
+                colSpan={columns.length}
+                className="text-center py-4 text-gray-500"
+              >
+                No records found.
+              </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
   );
-};
+}
 
 export default DataTable;
