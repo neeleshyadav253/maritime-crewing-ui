@@ -6,7 +6,7 @@ interface DataTableProps {
   columns: {
     key: keyof Candidate;
     label: string;
-    render?: (value: any, item: Candidate) => React.ReactNode;
+    render?: (value: unknown, item: Candidate) => React.ReactNode;
   }[];
   onRowClick?: (item: Candidate) => void;
 }

@@ -14,7 +14,7 @@ interface FilterPanelProps {
     source: string;
     nationality: string;
   };
-  onFilterChange: (filters: any) => void;
+  onFilterChange: (filters: unknown) => void;
   onClearFilters: () => void;
   availableOptions: {
     ranks: FilterOption[];

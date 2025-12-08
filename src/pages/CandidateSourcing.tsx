@@ -7,8 +7,7 @@ import DataTable from "../components/common/DataTable";
 import StatusTag from "../components/common/StatusTag";
 
 const CandidateSourcing: React.FC = () => {
-  const { candidates, filters, setFilters, getFilteredCandidates } =
-    useCandidateStore();
+  const { filters, setFilters, getFilteredCandidates } = useCandidateStore();
   const [showUpload, setShowUpload] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -24,7 +23,8 @@ const CandidateSourcing: React.FC = () => {
     {
       key: "firstName",
       label: "Name",
-      render: (value: string, item) => `${item.firstName} ${item.lastName}`,
+      render: (value: string, item: { firstName: any; lastName: any }) =>
+        `${item.firstName} ${item.lastName}`,
     },
     { key: "rank", label: "Rank" },
     { key: "nationality", label: "Nationality" },

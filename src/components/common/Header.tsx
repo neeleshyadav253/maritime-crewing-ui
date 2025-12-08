@@ -1,5 +1,5 @@
 import React from "react";
-import { Bell, Search, User, Settings } from "lucide-react";
+import { Bell, Search, Settings } from "lucide-react";
 
 const Header: React.FC = () => {
   return (

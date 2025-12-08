@@ -7,8 +7,7 @@ import {
   Ship,
   Calendar,
 } from "lucide-react";
-import { Candidate } from "../../types";
-import StatusTag from "../common/StatusTag";
+import type { Candidate } from "../../types";
 
 interface Alert {
   id: string;

@@ -4,9 +4,7 @@ import {
   Briefcase,
   Award,
   FileText,
-  Clock,
   Globe,
-  MapPin,
   Calendar,
   Phone,
   Mail,
@@ -20,7 +18,7 @@ import DocumentUpload from "../components/common/DocumentUpload";
 
 const CandidateProfile: React.FC = () => {
   const { candidates } = useCandidateStore();
-  const [selectedCandidate, setSelectedCandidate] = useState(candidates[0]);
+  const [selectedCandidate] = useState(candidates[0]);
   const [activeTab, setActiveTab] = useState<
     "overview" | "documents" | "service" | "training"
   >("overview");
@@ -228,6 +226,7 @@ const CandidateProfile: React.FC = () => {
                 ].map((tab) => (
                   <button
                     key={tab.id}
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     onClick={() => setActiveTab(tab.id as any)}
                     className={`py-4 px-1 font-medium text-sm border-b-2 transition-colors flex items-center ${
                       activeTab === tab.id

@@ -81,49 +81,6 @@ const CalendarSchedulingGrid: React.FC<CalendarSchedulingGridProps> = ({
     }
   };
 
-  const mockEvents: ScheduleEvent[] = [
-    {
-      id: "1",
-      title: "Sign-on",
-      type: "sign-on",
-      date: new Date(new Date().getFullYear(), new Date().getMonth(), 15),
-      candidateId: "1",
-      candidateName: "John Smith",
-      vesselName: "MS Atlantic Star",
-      color: "green",
-    },
-    {
-      id: "2",
-      title: "Training",
-      type: "training",
-      date: new Date(new Date().getFullYear(), new Date().getMonth(), 18),
-      candidateId: "2",
-      candidateName: "Maria Garcia",
-      color: "blue",
-    },
-    {
-      id: "3",
-      title: "Sign-off",
-      type: "sign-off",
-      date: new Date(new Date().getFullYear(), new Date().getMonth(), 20),
-      candidateId: "3",
-      candidateName: "Raj Patel",
-      vesselName: "Tanker Prosperity",
-      color: "red",
-    },
-    {
-      id: "4",
-      title: "Medical Check",
-      type: "medical",
-      date: new Date(new Date().getFullYear(), new Date().getMonth(), 22),
-      candidateId: "4",
-      candidateName: "Anna Kowalski",
-      color: "purple",
-    },
-  ];
-
-  const displayEvents = events.length > 0 ? events : mockEvents;
-
   return (
     <div className="card">
       <div className="flex items-center justify-between mb-6">

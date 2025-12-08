@@ -3,10 +3,8 @@ import {
   Users,
   UserPlus,
   AlertTriangle,
-  Calendar,
   FileWarning,
   Ship,
-  CheckCircle,
 } from "lucide-react";
 import MetricsCard from "../components/dashboard/MetricsCard";
 import { useDashboardStore } from "../store";
@@ -24,7 +22,8 @@ const Dashboard: React.FC = () => {
     {
       key: "firstName",
       label: "Name",
-      render: (value: string, item) => `${item.firstName} ${item.lastName}`,
+      render: (_value: string, item: { firstName: string; lastName: string }) =>
+        `${item.firstName} ${item.lastName}`,
     },
     { key: "rank", label: "Rank" },
     {
