@@ -10,13 +10,15 @@ import FleetOpsConsole from "./pages/FleetOpsConsole";
 import CandidateProfile from "./pages/CandidateProfile";
 import Interviews from "./pages/Interviews";
 import Deployment from "./pages/Deployment";
+import CrewPlanningSheet from "./pages/CrewPlanningSheet";
+import SeafarerDebriefing from "./pages/SeafarerDebriefing";
 
 const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Sidebar />
       <Header />
-      <main className="ml-64 pt-24 p-6">
+      <main className="p-6 pt-24 ml-64">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/sourcing" element={<CandidateSourcing />} />
@@ -26,6 +28,8 @@ const App: React.FC = () => {
           <Route path="/profile" element={<CandidateProfile />} />
           <Route path="/interviews" element={<Interviews />} />
           <Route path="/deployment" element={<Deployment />} />
+          <Route path="/crewPlanning" element={<CrewPlanningSheet />} />
+          <Route path="/seafarer-debriefing" element={<SeafarerDebriefing />} />
         </Routes>
       </main>
     </div>
