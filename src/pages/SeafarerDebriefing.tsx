@@ -399,7 +399,7 @@ const SeafarerDebriefing: React.FC = () => {
 
   if (mode === "setup") {
     return (
-      <div className="flex items-center justify-center min-h-screen p-6 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="w-full max-w-2xl p-8 bg-white shadow-2xl rounded-xl">
           <div className="mb-8 text-center">
             <Ship className="mx-auto mb-4 text-blue-600" size={64} />
