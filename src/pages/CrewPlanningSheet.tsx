@@ -1,4 +1,4 @@
-import { Plus, X, Menu, Calendar, Ship } from "lucide-react";
+import { Plus, Calendar, Ship } from "lucide-react";
 import type {
   PositionConfig,
   PositionKey,
@@ -466,7 +466,7 @@ const CrewPlanningSheet = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
-      <div className="sticky top-0 z-30 text-white shadow-lg bg-gradient-to-r from-gray-800 to-gray-900">
+      {/* <div className="sticky top-0 z-30 text-white shadow-lg bg-gradient-to-r from-gray-800 to-gray-900">
         <div className="max-w-[2000px] mx-auto p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -483,7 +483,7 @@ const CrewPlanningSheet = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* GRID */}
       <div className="max-w-[2000px] mx-auto p-6">
