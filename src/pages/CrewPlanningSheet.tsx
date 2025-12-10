@@ -115,7 +115,7 @@ const VesselPlanningChart: React.FC = () => {
   const [vessels, setVessels] = useState<VesselData[]>([
     {
       id: "1",
-      vessel: "DHT JAGUAR     (MAN BW 7G80ME)    JRC+201       HKG",
+      vessel: "JAGUAR     (MAN BW 7G80ME)    JRC+201       HKG",
       schedule: "China Dry Docks 25th Jan",
       master: {
         name: "Bapaditya Bose [ex]",
@@ -147,7 +147,7 @@ const VesselPlanningChart: React.FC = () => {
     },
     {
       id: "2",
-      vessel: "DHT LKNI     (MAN BW 7G80ME) JRC9201",
+      vessel: "LKNI     (MAN BW 7G80ME) JRC9201",
       schedule: "Corpus Christi 14th Feb",
       master: {
         name: "Deepak Salunkhe [ex]",
@@ -176,7 +176,7 @@ const VesselPlanningChart: React.FC = () => {
     },
     {
       id: "3",
-      vessel: "DHT LEOPARD  (MAN BW 7G80ME) JRC9201",
+      vessel: "LEOPARD  (MAN BW 7G80ME) JRC9201",
       schedule: "Galfe 20th Jan",
       master: {
         name: "Parimal Bhowmic [ex]",
@@ -295,7 +295,7 @@ const VesselPlanningChart: React.FC = () => {
     },
     {
       id: "7",
-      vessel: "DHT STALLION  (MAN BW 6G80ME-C9.5)     FURUNO HKG",
+      vessel: "STALLION  (MAN BW 6G80ME-C9.5)     FURUNO HKG",
       schedule: "Rio D Janeiro 24TH Jan",
       master: {
         name: "Vishal Kant [ex] EXT APRIL",
